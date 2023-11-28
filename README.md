@@ -31,3 +31,20 @@ Display the initial root password for GitLab, typically found in the specified f
 cat /etc/gitlab/initial_root_password
 ```
 
+
+## On the Runner Node 
+
+Download and execute the GitLab Runner repository installation script using curl.
+```
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
+```
+
+Install GitLab Runner using the Yum package manager.
+```
+sudo yum install gitlab-runner
+```
+
+Check the status of the GitLab Runner service using systemctl.
+```
+systemctl status gitlab-runner.service
+```
