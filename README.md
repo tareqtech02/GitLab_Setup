@@ -1,31 +1,20 @@
-##Master Node ( GitLab-Server )
+## On Master Node ( GitLab-Server )
 
-sudo yum install -y curl policycoreutils-python openssh-server perl
+# Install curl, policycoreutils-python, openssh-server, and perl using the Yum package manager.
+	sudo yum install -y curl policycoreutils-python openssh-server perl
 
-sudo systemctl status sshd
+# Check the status of the SSH daemon using systemctl.
+	sudo systemctl status sshd
 
-systemctl status firewalld
+# Check the status of the firewalld service using systemctl.
+	systemctl status firewalld
 
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+# Download and execute the GitLab repository installation script using curl and install GitLab.
+	curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
 
-192.168.1.216 GitLab-Server
-192.168.1.78  GitLab-Prod
-192.168.1.16  GitLab-Dev
+# Install GitLab-EE with a specified external URL.
+	sudo EXTERNAL_URL="http://GitLab-Server" yum install -y gitlab-ee
 
-sudo EXTERNAL_URL="http://GitLab-Server" yum install -y gitlab-ee
+# Display the initial root password for GitLab, typically found in the specified file.
+	cat /etc/gitlab/initial_root_password
 
-cat /etc/gitlab/initial_root_password
-
-
-## Add in Windws
-c:\Windows\System32\Drivers\etc\hosts
-192.168.1.216 GitLab-Server
-
-
-
-stages:
-	  - build
-Tasks1:
-	   stage: build
-	   script:
-		        - logger "Hello From GitLab Stage 'Build'"
