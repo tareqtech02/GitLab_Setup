@@ -87,7 +87,7 @@ ___
 
 Register a GitLab Runner with the specified GitLab instance URL, registration token,
 
-# gitlab-runner register:
+gitlab-runner register:
 Enter the GitLab instance URL: `http://GitLab-Server`  
 Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT`  
 Enter a description for the runner: `gitrunner-prod`  
