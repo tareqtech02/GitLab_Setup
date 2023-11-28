@@ -31,6 +31,10 @@ Display the initial root password for GitLab, typically found in the specified f
 cat /etc/gitlab/initial_root_password
 ```
 
+___
+___
+___
+
 
 ## On the Runner Node 
 
