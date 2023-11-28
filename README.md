@@ -102,6 +102,7 @@ usermod -aG wheel gitlab-runner
 ```
 
 
+
 Run a Docker container
 ```
 docker run -dit --name web -p 80:80 tareqtech/index01
