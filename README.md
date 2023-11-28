@@ -97,7 +97,10 @@ Enter an executor:  `shell`
 
 Add the gitlab-runner user to the 'wheel' group, providing necessary permissions.
 This command assumes that the 'wheel' group is used for elevated privileges.
+
+
 ```
+vim /etc/sudoers
 usermod -aG wheel gitlab-runner
 ```
 
