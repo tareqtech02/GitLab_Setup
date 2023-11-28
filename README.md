@@ -2,7 +2,7 @@
 
 Install curl, policycoreutils-python, openssh-server, and perl using the Yum package manager.
 ```
-sudo yum install -y curl policycoreutils-python openssh-server perl
+sudo yum install policycoreutils-python-utils.noarch openssh-server perl curl -y
 ```
 
 Check the status of the SSH daemon using systemctl.
@@ -20,7 +20,7 @@ Download and execute the GitLab repository installation script using curl and in
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
 ```
 
-Install GitLab-EE with a specified external URL.
+Install GitLab  Server, Called mine is 'http://GitLab-Server'
 ```
 sudo EXTERNAL_URL="http://GitLab-Server" yum install -y gitlab-ee
 ```
@@ -30,6 +30,8 @@ Display the initial root password for GitLab, typically found in the specified f
 ```
 cat /etc/gitlab/initial_root_password
 ```
+
+Find your ip and open `Google Chrome`, Use Username `root` and Password from the file 
 
 ___
 ___
@@ -44,13 +46,65 @@ curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/s
 
 Install GitLab Runner using the Yum package manager.
 ```
-sudo yum install gitlab-runner
+sudo yum install gitlab-runner -y
 ```
 
 Check the status of the GitLab Runner service using systemctl.
 ```
 systemctl status gitlab-runner.service
 ```
+
+Install openssh-server using the Yum package manager.
+```
+sudo yum install openssh-server  -y
+```
+
+Check the status of the SSH daemon using systemctl.
+```
+sudo systemctl status sshd
+```
+
+Check the status of the firewalld service using systemctl.
+```
+systemctl status firewalld
+```
+___
+___
+
+
+## Register the gitlab-runner on 
+
+Add hosts IPs and Hostname in All Nodes
+```
+vim /etc/hosts
+192.168.1.216 GitLab-Server
+192.168.1.78  GitLab-Prod
+192.168.1.16  GitLab-Dev
+```
+
+Register a GitLab Runner with the specified GitLab instance URL, registration token,
+
+Register the GitLab Runner
+```
+gitlab-runner register
+```
+Enter the GitLab instance URL: `http://GitLab-Server`  
+Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT`  
+Enter a description for the runner: `GitLab-Runner-Prod`  
+Enter tags for the runner (comma-separated): `prod`  
+Enter an executor:  `shell`  
+
+
+
+Add the gitlab-runner user to the 'wheel' group, providing necessary permissions.
+This command assumes that the 'wheel' group is used for elevated privileges.
+
+
+```
+visudo
+usermod -aG wheel gitlab-runner OR gitlab-runner        ALL=(ALL)       NOPASSWD: ALL
+```
+
 ___
 ___
 
@@ -68,7 +122,7 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 
 Install Docker CE, Docker CLI, containerd.io, docker-buildx-plugin, and docker-compose-plugin using Yum.
 ```
-sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
 
 Check the status of the Docker service using systemctl.
@@ -80,32 +134,3 @@ Run the "hello-world" Docker container to verify the Docker installation.
 ```
 sudo docker run hello-world
 ```
-___
-___
-## Register the gitlab-runner on 
-
-
-Register a GitLab Runner with the specified GitLab instance URL, registration token,
-
-gitlab-runner register:
-Enter the GitLab instance URL: `http://GitLab-Server`  
-Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT`  
-Enter a description for the runner: `gitrunner-prod`  
-Enter an executor:  `shell`  
-
-
-
-Add the gitlab-runner user to the 'wheel' group, providing necessary permissions.
-This command assumes that the 'wheel' group is used for elevated privileges.
-
-
-```
-vim /etc/sudoers
-usermod -aG wheel gitlab-runner
-```
-
-
-
-Run a Docker container
-```
-docker run -dit --name web -p 80:80 tareqtech/index01
