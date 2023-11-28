@@ -102,9 +102,12 @@ This command assumes that the 'wheel' group is used for elevated privileges.
 
 ```
 visudo
-usermod -aG wheel gitlab-runner OR gitlab-runner        ALL=(ALL)       NOPASSWD: ALL
+usermod -aG wheel gitlab-runner OR 
 ```
-
+Or Add privileges for only user
+```
+gitlab-runner        ALL=(ALL)       NOPASSWD: ALL
+```
 ___
 ___
 
