@@ -33,7 +33,6 @@ cat /etc/gitlab/initial_root_password
 
 ___
 ___
-___
 
 
 ## On the Runner Node 
@@ -52,3 +51,57 @@ Check the status of the GitLab Runner service using systemctl.
 ```
 systemctl status gitlab-runner.service
 ```
+___
+___
+
+## Install Docker on GitLab-Runner
+
+Install yum-utils package, which provides utilities for managing Yum repositories and packages.
+```
+sudo yum install -y yum-utils
+```
+
+Add the Docker CE repository to the Yum configuration manager.
+```
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+Install Docker CE, Docker CLI, containerd.io, docker-buildx-plugin, and docker-compose-plugin using Yum.
+```
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Check the status of the Docker service using systemctl.
+```
+systemctl status docker
+```
+
+Run the "hello-world" Docker container to verify the Docker installation.
+```
+sudo docker run hello-world
+```
+___
+___
+## Register the gitlab-runner on 
+
+
+Register a GitLab Runner with the specified GitLab instance URL, registration token,
+
+gitlab-runner register
+Enter the GitLab instance URL: `http://GitLab-Server`
+Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT`
+Enter a description for the runner: `gitrunner-prod`
+Enter an executor:  `shell`
+
+
+
+Add the gitlab-runner user to the 'wheel' group, providing necessary permissions.
+This command assumes that the 'wheel' group is used for elevated privileges.
+```
+usermod -aG wheel gitlab-runner
+```
+
+
+Run a Docker container
+```
+docker run -dit --name web -p 80:80 tareqtech/index01
