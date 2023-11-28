@@ -87,11 +87,11 @@ ___
 
 Register a GitLab Runner with the specified GitLab instance URL, registration token,
 
-gitlab-runner register <br>
-Enter the GitLab instance URL: `http://GitLab-Server` <br>
-Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT` <br>
-Enter a description for the runner: `gitrunner-prod` <br>
-Enter an executor:  `shell` <br>
+# gitlab-runner register:
+Enter the GitLab instance URL: `http://GitLab-Server`  
+Enter the registration token:  `GR1348941nEhqC4jxpTHsxHhS4mqT`  
+Enter a description for the runner: `gitrunner-prod`  
+Enter an executor:  `shell`  
 
 
 
