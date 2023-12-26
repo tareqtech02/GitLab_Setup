@@ -130,7 +130,9 @@ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 
 Check the status of the Docker service using systemctl.
 ```
-systemctl status docker
+systemctl enable docker.service
+systemctl start docker.service
+systemctl status docker.service
 ```
 
 Run the "hello-world" Docker container to verify the Docker installation.
