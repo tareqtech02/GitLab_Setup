@@ -8,7 +8,7 @@ ping google.com -c 5
 
 ## Change the Hostname for the Server
 ```
-hostnamectl set-hostname Jenkins
+hostnamectl set-hostname GitLab-Server
 ```
 
 ## Ensure to update the System
