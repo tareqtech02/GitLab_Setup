@@ -1,17 +1,17 @@
 # On Master Node ( GitLab-Server )
 
-## Ensure an internet connection is available.
+Ensure an internet connection is available.
 
 ```
 ping google.com -c 5
 ```
 
-## Change the Hostname for the Server
+Change the Hostname for the Server
 ```
 hostnamectl set-hostname GitLab-Server
 ```
 
-## Ensure to update the System
+Ensure to update the System
 
 Update the Systme
 ```
@@ -60,20 +60,20 @@ ___
 ___
 
 
-## On the Runner Node 
+# On the Runner Node 
 
-## Ensure an internet connection is available.
+Ensure an internet connection is available.
 
 ```
 ping google.com -c 5
 ```
 
-## Change the Hostname for the Server
+Change the Hostname for the Server
 ```
 hostnamectl set-hostname GitLab-<Dev/Prod>
 ```
 
-## Ensure to update the System
+Ensure to update the System
 
 Update the Systme
 ```
@@ -118,7 +118,7 @@ ___
 ___
 
 
-## Register the gitlab-runner on 
+# Register the gitlab-runner on 
 
 Add hosts IPs and Hostname in All Nodes
 ```
@@ -157,7 +157,7 @@ gitlab-runner        ALL=(ALL)       NOPASSWD: ALL
 ___
 ___
 
-## Install Docker on GitLab-Runner
+# Install Docker on GitLab-Runner
 
 Install yum-utils package, which provides utilities for managing Yum repositories and packages.
 ```
