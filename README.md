@@ -48,6 +48,10 @@ Install GitLab  Server, Called mine is 'http://GitLab-Server'
 sudo EXTERNAL_URL="http://GitLab-Server" yum install -y gitlab-ee
 ```
 
+Check the status of the GitLab Server service using systemctl.
+```
+systemctl status gitlab-runsvdir.service
+```
 
 Display the initial root password for GitLab, typically found in the specified file.
 ```
