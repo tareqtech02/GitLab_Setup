@@ -62,6 +62,29 @@ ___
 
 ## On the Runner Node 
 
+## Ensure an internet connection is available.
+
+```
+ping google.com -c 5
+```
+
+## Change the Hostname for the Server
+```
+hostnamectl set-hostname GitLab-Server
+```
+
+## Ensure to update the System
+
+Update the Systme
+```
+sudo yum upgrade -y
+```
+
+Reboot the system
+```
+reboot
+```
+
 Download and execute the GitLab Runner repository installation script using curl.
 ```
 curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
