@@ -58,8 +58,10 @@ Display the initial root password for GitLab, typically found in the specified f
 cat /etc/gitlab/initial_root_password
 ```
 
-Find your ip and open `Google Chrome`, Use Username `root` and Password from the file 
-
+Find your ip and open `Google Chrome`, Use Username `root` and Password from the file
+```
+http://<IP Address>
+```
 ___
 ___
 
